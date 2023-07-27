@@ -40,8 +40,12 @@
 
 #### **ADRV9002 Interface Selector (J1)**
   Switch between CMOS synchronous serial interface (CSSI) LVDS synchronous serial interface (LSSI).
-  If the FPGA is configured with CSSI but 2.5V is applied, the red LED (D2) lights up and indicates the error.
-  At this time, the data port of ADRV9002 is protected to be Hi-Z on the FPGA side.
+  This selector switches the IO pin voltage of the SoC that interfaces with the ADRV9002 to 2.5V for LSSI and 1.8V for CSSI.
+  In the Cyclone V SoC, the LVDS IO voltage is 2.5V. On the other hand, the ADRV9002 operates at 1.8V for both CSSI and LSSI.
+  The SoC is electrically matched to the LVDS of the ADRV9002 after being configured with LVDS.
+  However, if the SoC is configured with CSSI while an IO voltage of 2.5V is applied at J1, 2.5V will be applied to the interface and damage the ADRV9002.
+  For this reason, in Yonaguni's HDL reference design, if the SoC is configured with CSSI but 2.5V is applied, the red LED (D2) lights up and indicates the error.
+  At this time, the data port of ADRV9002 is protected to be Hi-Z on the SoC side.
 
 #### **ADRV9002 Clock Selector (SW1)**
   You can select either the on-board TCXO or an external source (CN1) as the device clock source for the ADRV9002.
@@ -57,7 +61,7 @@
 | 1 | In | JTAG_TCK | Clock signal |
 | 2 | Ground | GND | Signal ground |
 | 3 | Out | HPS_TDO | Data from device |
-| 4 | In | VCC3P3 | 3.3V power input |
+| 4 | Vcc | VCC3P3 | 3.3V power input |
 | 5 | In | JTAG_TMS | JTAG state machine control |
 | 6 | In | JTAG_RST | JTAG reset |
 | 7 | Not Connect | NC | N/A |
@@ -70,7 +74,7 @@
 | Pin No | Type | Mnemonic | Note |
 ----|----|----|----
 | 1 | Ground | GND | Signal ground |
-| 2 | Out | VCC3P3 | 3.3V power supply |
+| 2 | Vcc | VCC3P3 | 3.3V power supply |
 | 3 | Out | USR_OUT0 | USER_OUT[0] |
 | 4 | Out | USR_OUT1 | USER_OUT[1] |
 | 5 | Out | USR_OUT2 | USER_OUT[2] |
@@ -88,7 +92,7 @@
 | 17 | Out | USR_OUT14 | USER_OUT[14] |
 | 18 | Out | USR_OUT15 | USER_OUT[15] |
 | 19 | Ground | GND | Signal ground |
-| 20 | Out | VCC3P3 | 3.3V power supply |
+| 20 | Vcc | VCC3P3 | 3.3V power supply |
 
 
 #### **microSDXC Card Slot (CN10)**
@@ -113,17 +117,17 @@
 
 
 #### **Cyclone V Boot Selector (J3)**
-  You can select the boot source from [QSPI/SD].
+  You can select the boot source from QSPI Flash Memory or SD card by [QSPI/SD].
 
 
 #### **Cyclone V MSEL (SW2)**
 | bit | Signal name | Note |
 ----|----|----
-| 1 | MSEL[4] | 0:ON, 1:OFF |
-| 2 | MSEL[3] | 0:ON, 1:OFF |
+| 1 | MSEL[0] | 0:ON, 1:OFF |
+| 2 | MSEL[1] | 0:ON, 1:OFF |
 | 3 | MSEL[2] | 0:ON, 1:OFF |
-| 4 | MSEL[1] | 0:ON, 1:OFF |
-| 5 | MSEL[0] | 0:ON, 1:OFF |
+| 4 | MSEL[3] | 0:ON, 1:OFF |
+| 5 | MSEL[4] | 0:ON, 1:OFF |
 | 6 | N/A | |
 
   In Yonaguni, MSEL[4..0] is set to 00100.
