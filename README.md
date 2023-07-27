@@ -17,7 +17,7 @@
 
 ### **Hardware Architecture**
   The following shows a block diagram of the Yonaguni hardware architecture.
-  ![Functional block diagram](./img/functional_block.svg)
+  ![Functional block diagram](./img/functional_block_2.svg)
   For further descriptions, refer ```Yonaguni_HW-Specifications_r2.00.docx``` (current version is only available in Japanese).
 
 
