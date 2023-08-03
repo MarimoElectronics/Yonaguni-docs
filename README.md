@@ -178,8 +178,11 @@
 
 #### **ADAU1761 I2C Port (J13)**
   To program the ADAU1761 from SigmaStudio using the EVAL-ADUSB2EBZ, set SW9 from "NORM" to "PGM" while power is applied.
+  
   Refer to the following documents.
+  
   https://www.analog.com/en/app-notes/an-1006.html
+  
 | Pin No | Type | Mnemonic | Note |
 ----|----|----|----
 | 1 | In | AC_DL_SCL | I2C SCL |
@@ -191,6 +194,7 @@
 ### **Power Supply**
 #### **USB Type-C (CN14)**
   In order to operate Yonaguni, a USB PD AC adapter capable of 9V/3A (≥27W) is required.
+  
   When using USB PD as a power source, J14 is always short.
   
   When power is supplied, the amber LED (D15) lights up.
@@ -198,7 +202,9 @@
 
 #### **USB PD IC I2C Port (J10)**
   To program USB PD IC(STUSB4500), use this I2C Port.
+  
   However, Yonaguni users typically do not program the STUSB4500.
+  
 | Pin No | Type | Mnemonic | Note |
 ----|----|----|----
 | 1 | In | PD_SCL | I2C SCL |
@@ -208,6 +214,7 @@
 
 #### **LTC2977/2974 PMBus Power Manager Interface (J11)**
   To program LTC2977/TC2974, use this I2C Port.
+  
 | Pin No | Type | Mnemonic | Note |
 ----|----|----|----
 | 1 | In | I3P3 | 3.3V Power input |
@@ -218,6 +225,7 @@
 
 #### **LTC2977/2974 PMBus Power Manager Write Protect Pin (J12)**
   If short J12, WP pin of LTC2974/2977 become low, and LTC2977/TC2974 is ready for programming.
+  
   Normally J12 is open and used with the LTC2977/TC2974 write-protected.
 
   For more information about write protection function refer LTC2974/2977's datasheet.
