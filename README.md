@@ -12,7 +12,11 @@
   Yonaguni is a compact RF System on Module (SoM).
   Yonaguni integrates an Intel Cyclone® V SE SoC FPGA baseband processor, Analog Devices ADAU1761 SigmaDSP® integrated audio codec IC, and power circuits with Analog Devices ADRV9002 Agile Transceiver™ IC.
   ![Board Picture](./img/board.png)
+  Board Top View
 
+  ![Board Picture2](./img/board_bottom_view.png)
+  Board Bottom View
+ 
 
 
 ### **Hardware Architecture**
