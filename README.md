@@ -170,7 +170,7 @@
 | Jack No | Type | Mnemonic | Note |
 ----|----|----|----
 | J5 | Out | HP_OUT | Headphone output |
-| J6 | Out | LINE_IN | Line output |
+| J6 | Out | LINE_OUT | Line output |
 | J8 | In | MIC_IN | Microphone input.  |
 | J9 | In | LINE_IN | Line input |
 
@@ -243,7 +243,7 @@
 This repository contains BOM files, schematics, how to customize operating system.
 ```
 README.md
-Yonaguni_Rev2_BOM_r1.08.xlsx
+Yonaguni_Rev2_BOM_r1.09.xlsx
 Yonaguni_Schematic_r2.02.pdf
 ```
 
