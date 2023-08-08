@@ -1,4 +1,39 @@
 # Yonaguni
+
+- [Yonaguni](#yonaguni)
+  - [**Project Descriptions**](#project-descriptions)
+  - [**Hardware Overview**](#hardware-overview)
+    - [**Hardware Architecture**](#hardware-architecture)
+    - [**ADRV9002 Connectors, Jumper, Switch**](#adrv9002-connectors-jumper-switch)
+      - [**RF Ports (CN1 - CN7)**](#rf-ports-cn1---cn7)
+      - [**ADRV9002 Interface Selector (J1)**](#adrv9002-interface-selector-j1)
+      - [**ADRV9002 Clock Selector (SW1)**](#adrv9002-clock-selector-sw1)
+    - [**Cyclone V Connectors, Jumpers, Swithces**](#cyclone-v-connectors-jumpers-swithces)
+      - [**JTAG (CN8)**](#jtag-cn8)
+      - [**GPIO (CN9)**](#gpio-cn9)
+      - [**microSDXC Card Slot (CN10)**](#microsdxc-card-slot-cn10)
+      - [**USB 2.0 (CN12)**](#usb-20-cn12)
+      - [**USB UART (CN13)**](#usb-uart-cn13)
+      - [**Cyclone V Boot Selector (J3)**](#cyclone-v-boot-selector-j3)
+      - [**Cyclone V MSEL (SW2)**](#cyclone-v-msel-sw2)
+      - [**Reset Switch (SW3 - SW5)**](#reset-switch-sw3---sw5)
+      - [**User Defined DIP Switch (SW6)**](#user-defined-dip-switch-sw6)
+      - [**User Defined Button Switch (SW7, SW8)**](#user-defined-button-switch-sw7-sw8)
+      - [**User Defined LED (D4 - D7)**](#user-defined-led-d4---d7)
+    - [**ADAU1761 Connectors and Jumper**](#adau1761-connectors-and-jumper)
+      - [**3.5 mm Audio Jack (J5, J6, J8, J9)**](#35-mm-audio-jack-j5-j6-j8-j9)
+      - [**ADAU1761 I2C Port (J13)**](#adau1761-i2c-port-j13)
+    - [**Power Supply**](#power-supply)
+      - [**USB Type-C (CN14)**](#usb-type-c-cn14)
+      - [**USB PD IC I2C Port (J10)**](#usb-pd-ic-i2c-port-j10)
+      - [**LTC2977/2974 PMBus Power Manager Interface (J11)**](#ltc29772974-pmbus-power-manager-interface-j11)
+      - [**LTC2977/2974 PMBus Power Manager Write Protect Pin (J12)**](#ltc29772974-pmbus-power-manager-write-protect-pin-j12)
+  - [**Software Overview**](#software-overview)
+  - [**Repository information**](#repository-information)
+  - [**License**](#license)
+  - [**DISCLAIMER**](#disclaimer)
+
+
 ## **Project Descriptions**
   Yonaguni is a Software Defined Radio (SDR) System on Module (SoM) for Analog Devices ADRV9002 Agile Transceiver™ IC.
   The SoM is an Intel Cyclone® V SE SoC FPGA-based single-board that can be used as an evaluation tool and prototyping platform.
@@ -40,7 +75,8 @@
 
 \* External LO feature is not supported in this release.
 
-\** Current hardware design version showed frequency response degradation at 3.5 GHz and above.
+\** Current hardware design version showed frequency response degradation at 3.5 GHz and above.  
+![Frequency response](./img/frequency_response_rx_path.png)
 
 #### **ADRV9002 Interface Selector (J1)**
   Switch between CMOS synchronous serial interface (CSSI) LVDS synchronous serial interface (LSSI).
@@ -238,29 +274,33 @@
 
 
 ## **Software Overview**
-  **'To be confirmed'**
-
+We provide FPGA design, HDL IP, Linux Kernel source code, and sample demo project.
+```
+HDL IP modified from ADI HDL project
+Linux Kernel source code for ADI Kuiper Linux
+Yonaguni FPGA design files
+```
 
 
 
 ## **Repository information**
 This repository contains BOM files, schematics, how to customize operating system.
 ```
+How-toKernel.md
+How-toSD.md
+How-toUBoot.md
 README.md
 Yonaguni_Rev2_BOM_r1.09.xlsx
 Yonaguni_Schematic_r2.02.pdf
 ```
 
 ## **License**
-MIT License
-
 Copyright (c) 2023 Marimo Electronics Co., Ltd.
 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+
 ## **DISCLAIMER**
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

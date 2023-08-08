@@ -18,7 +18,8 @@ Then unzip file.
 Prepare files listed below:
 
 ```
-uboot.img
+extlinux/extlinux.conf
+u-boot-with-spl.sfp
 u-boot.scr
 yonaguni_cmos.dtb
 yonaguni_cmos.rbf
@@ -26,9 +27,23 @@ zImage
 ```
 
 If you want to prepare above files from source, please refer each instructions.  
-[How-to: Build U-boot](TBU)  
-[How-to: Customize and Build FPGA Project](TBU)  
-[How-to: Build Linux Kernel Image](./How-toKernel.md)  
+[How-to: Build U-boot](./How-toUBoot.md)
+[How-to: Customize and Build FPGA Project](TBU)
+[How-to: Build Linux Kernel Image](./How-toKernel.md)
+
+
+Note:
+yonaguni_cmos.dtb is the Device Tree blob file.  
+For Yonaguni, we provide two Device Tree blob files:
+| Filename | ADRV9002 Operation Mode |
+----|----
+| yonaguni_cmos.dtb | independent mode |
+| yonaguni_cmos-rx2tx2.dtb | MIMO mode |
+
+For further information about ADRV9002 operation mode, please refer:  
+https://wiki.analog.com/resources/tools-software/linux-drivers/iio-transceiver/adrv9002#device_modes
+
+If you want to use MIMO mode device tree, please rename yonaguni_cmos-rx2tx2.dtb to yonaguni_cmos.dtb, then place to boot partition in the SD card image.  
 
 
 ## 3. Replace boot files
@@ -45,7 +60,7 @@ $ ls /dev/mapper/
 control  loop0p1  loop0p2  loop0p3
 ```
 
-For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`, and the last partition is for the boot image partition (custom partition type=0xA2).  
+For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(rootfs), and the last partition is for the boot image partition (custom partition type=0xA2).  
 
 1. Mount the boot partition to a certain mount point.
 
@@ -97,14 +112,15 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`, 
 
     ```Shell
     $ sudo rm -rf /sdroot/
-    $ sudo cp --preserve=timestamps uboot.img /sdroot
+    $ sudo cp --preserve=timestamps extlinux/extlinux.conf /sdroot/extlinux
+    $ sudo cp --preserve=timestamps u-boot-with-spl.sfp /sdroot
     $ sudo cp --preserve=timestamps u-boot.scr /sdroot
     $ sudo cp --preserve=timestamps yonaguni_cmos.dtb /sdroot
     $ sudo cp --preserve=timestamps yonaguni_cmos.rbf /sdroot
     $ sudo cp --preserve=timestamps zImage /sdroot
     ```
 
-3. Unmount the boot partition and write `uboot.img` to the boot image partition.
+3. Unmount the boot partition and write `u-boot-with-spl.sfp` to the boot image partition.
 
     ```Shell
     $ sudo umount /sdroot
@@ -125,3 +141,7 @@ If you'd like to customize the rootfs, mount loop0p2 and execute `chroot`.
 ## Conclusion
 Now you have the Yonaguni SD card image.  
 Write the image to a SD card.
+
+
+Note:  
+If you want to apply above boot files / kernel modifications after writing image to SD card, you can simply place or replace files to the appropriate partitions in the SD card.
