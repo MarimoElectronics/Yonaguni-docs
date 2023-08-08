@@ -136,8 +136,8 @@
 
 
 #### **microSDXC Card Slot (CN10)**
-  This board supports microSDXC card Up to **'To be confirmed'** GB.
-
+  This board supports microSDXC card.  
+  We tested 16 GB microSDHC card and 64 GB microSDXC card operations.
 
 #### **USB 2.0 (CN12)**
   USB OTG Connector, connected to USB1 of FPGA.
