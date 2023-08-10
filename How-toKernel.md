@@ -16,6 +16,7 @@ $ tar xf gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf.tar.xz
 $ export TOP_FOLDER=`pwd`
 $ export ARCH=arm
 $ export CROSS_COMPILE=$TOP_FOLDER/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
+$ mkdir kernel_out
 $ export KERNEL_OUTDIR=$TOP_FOLDER/kernel_out
 ```
 
@@ -34,7 +35,7 @@ $ sudo apt install gawk wget git-core diffstat unzip texinfo \
 ## 2. Get kernel source
 
 ```Shell
-$ git clone -b 2021_r2 https://www.github.com/MarimoElectronics/linux
+$ git clone -b 2021_R2 https://www.github.com/MarimoElectronics/linux
 ```
 
 Please make sure to sync the branch to the SD card image release you will use.  
@@ -61,6 +62,7 @@ Device Tree file modification is not needed at this time, but have to be complet
 `-j` option is used for multithread compiling.
 
 ```Shell
+$ cd linux
 $ make socfpga_adi_defconfig O=$KERNEL_OUTDIR
 $ make menuconfig O=$KERNEL_OUTDIR
 # Uncheck [General setup > Automatically append version information to the version string]
