@@ -16,7 +16,6 @@ $ tar xf gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf.tar.xz
 $ export TOP_FOLDER=`pwd`
 $ export ARCH=arm
 $ export CROSS_COMPILE=$TOP_FOLDER/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
-$ mkdir kernel_out
 $ export KERNEL_OUTDIR=$TOP_FOLDER/kernel_out
 ```
 
