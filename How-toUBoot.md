@@ -13,13 +13,13 @@
 Before build the U-Boot image for Yonaguni, you need to prepare FPGA handoff files.  
 You need Quartus Prime 20.1.1 Standard Edition and Soc EDS 20.1 Standard Edition.  
 
-To compile Linux kernel for Yonaguni, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain).
+To compile Linux kernel for Yonaguni, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain), formerly known as [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm).
 
 ```Shell
-$ wget https://developer.arm.com/-/media/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf.tar.xz
-$ tar xf gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf.tar.xz
+$ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz
+$ tar xf gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz
 $ export TOP_FOLDER=`pwd`
-$ export PATH=$TOP_FOLDER/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf/bin:$PATH
+$ export PATH=$TOP_FOLDER/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf/bin:$PATH
 ```
 
 Also, you have to install some packages for dependency.
