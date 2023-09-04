@@ -78,6 +78,8 @@
 \** Current hardware design version showed frequency response degradation at 3.5 GHz and above.  
 ![Frequency response](./img/frequency_response_rx_path.png)
 
+Note: These are the results based on our measurement method. It may differ from the manufacturer's published value.
+
 #### **ADRV9002 Interface Selector (J1)**
   Switch between CMOS synchronous serial interface (CSSI) LVDS synchronous serial interface (LSSI).
   This selector switches the IO pin voltage of the SoC that interfaces with the ADRV9002 to 2.5V for LSSI and 1.8V for CSSI.
