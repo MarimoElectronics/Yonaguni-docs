@@ -59,6 +59,8 @@ cd $PROJECT_FOLDER
 mkdir -p software/bootloader
 cd software/bootloader
 # run next command in embedded_command_shell.sh environment
+#  for example, SoC EDS folder name is "intelFPGA/20.1/
+#  ./intleFPGA/20.1/embedded/embedded_command_shell.sh
 $ bsp-create-settings \
    --type spl \
    --bsp-dir software/bootloader \
@@ -85,7 +87,6 @@ We only checked with u-boot-socfpga v2020.07.
 ## 4. Apply handoff files to the U-Boot source code
 Run the qts_filer script to take the sources from the handoff folder, format them appropriately and copy them to the U-Boot source code:
 ```Shell
-$ cd $PROJECT_FOLDER/software/bootloader/u-boot-socfpga
 $ cd $PROJECT_FOLDER/software/bootloader/u-boot-socfpga
 $ ./arch/arm/mach-socfpga/qts-filter.sh \
    cyclone5 \
