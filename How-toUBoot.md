@@ -60,7 +60,7 @@ mkdir -p software/bootloader
 cd software/bootloader
 # run next command in embedded_command_shell.sh environment
 #  for example, SoC EDS folder name is "intelFPGA/20.1/
-#  $ ./intleFPGA/20.1/embedded/embedded_command_shell.sh
+$ ./intleFPGA/20.1/embedded/embedded_command_shell.sh
 $ bsp-create-settings \
    --type spl \
    --bsp-dir software/bootloader \
