@@ -1,6 +1,6 @@
-# How-to: Build Yonaguni Kernel Image
+# How-to: Build ADRV9002 RF-SoM Kernel Image
 
-- [How-to: Build Yonaguni Kernel Image](#how-to-build-yonaguni-kernel-image)
+- [How-to: Build ADRV9002 RF-SoM Kernel Image](#how-to-build-adrv9002-rf-som-kernel-image)
   - [1. Prepare the compile environment](#1-prepare-the-compile-environment)
   - [2. Get kernel source](#2-get-kernel-source)
   - [3. Apply modifications](#3-apply-modifications)
@@ -8,7 +8,7 @@
 
 
 ## 1. Prepare the compile environment
-To compile Linux kernel for Yonaguni, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain), formerly known as [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm).
+To compile Linux kernel for ADRV9002 RF-SoM, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain), formerly known as [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm).
 
 ```Shell
 $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz
@@ -34,7 +34,7 @@ $ sudo apt install gawk wget git-core diffstat unzip texinfo \
 ## 2. Get kernel source
 
 ```Shell
-$ git clone -b 2021_R2 https://www.github.com/MarimoElectronics/linux
+$ git clone -b 2021_R2 https://www.github.com/analogdevicesinc/linux
 ```
 
 Please make sure to sync the branch to the SD card image release you will use.  
@@ -45,7 +45,12 @@ Please make sure to sync the branch to the SD card image release you will use.
 
 
 ## 3. Apply modifications
-MarimoElectronics/linux repository is already applied modifications to analogdevicesinc/linux for Yonaguni reference design.  
+Apply modifications to analogdevicesinc/linux for ADRV9002 RF-SoM reference design.  
+The patch file (linux_kernel_diff.patch) is in "kernel_patch" directory in this repository.  
+```Shell
+$ cd linux
+$ git apply --whitespace=nowarn ../kernel_patch/linux_kernel_diff.patch
+```
 If you prefer to keep no identifiers such as `-dirty` or `+` in the kernel version string, you must keep it locally committed and turn off the option in the next step.
 
 

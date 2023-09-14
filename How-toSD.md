@@ -1,6 +1,6 @@
-# How-to: Make Yonaguni SD Card Image
+# How-to: Make ADRV9002 RF-SoM SD Card Image
 
-- [How-to: Make Yonaguni SD Card Image](#how-to-make-yonaguni-sd-card-image)
+- [How-to: Make ADRV9002 RF-SoM SD Card Image](#how-to-make-adrv9002-rf-som-sd-card-image)
   - [1. Download Analog Devices Kuiper Linux](#1-download-analog-devices-kuiper-linux)
   - [2. Prepare Need files](#2-prepare-need-files)
   - [3. Replace boot files](#3-replace-boot-files)
@@ -9,7 +9,7 @@
 
 ## 1. Download Analog Devices Kuiper Linux
 Go [Kuiper Linux wiki](https://wiki.analog.com/resources/tools-software/linux-software/adi-kuiper_images/release_notes) and download actual zip file.  
-If the supported OS version by Yonaguni is older than latest release, expand **Old Releases** block and find direct link.  
+If the supported OS version by ADRV9002 RF-SoM is older than latest release, expand **Old Releases** block and find direct link.  
 Please be sure to verify the checksum for the downloaded image.  
 Then unzip file.
 
@@ -21,29 +21,31 @@ Prepare files listed below:
 extlinux/extlinux.conf
 u-boot-with-spl.sfp
 u-boot.scr
-yonaguni_cmos.dtb
+./device_tree/yonaguni_cmos.dtb
 yonaguni_cmos.rbf
 zImage
 ```
 
 If you want to prepare above files from source, please refer each instructions.  
-[How-to: Build U-boot](./How-toUBoot.md)
-[How-to: Customize and Build FPGA Project](TBU)
-[How-to: Build Linux Kernel Image](./How-toKernel.md)
+[How-to: Customize and Build FPGA Project](https://github.com/MarimoElectronics/Yonaguni-FPGA/blob/main/How-toFPGA.md), to prepare yonaguni_cmos.rbf. If your rbf file has a different name, rename to "yonaguni_cmos.rbf" or modify settings in [How-to: Build U-boot](./How-toUBoot.md)  
+[How-to: Build U-boot](./How-toUBoot.md), to prepare extlinux/extlinux.conf, u-boot-with-spl.sfp, u-boot.scr  
+[How-to: Build Linux Kernel Image](./How-toKernel.md), to prepare zImage
 
 
 Note:
 yonaguni_cmos.dtb is the Device Tree blob file.  
-For Yonaguni, we provide two Device Tree blob files:
+For ADRV9002 RF-SoM, we provide two Device Tree blob files:  
 | Filename | ADRV9002 Operation Mode |
 ----|----
 | yonaguni_cmos.dtb | independent mode |
 | yonaguni_cmos-rx2tx2.dtb | MIMO mode |
 
+These dtb file is in "device_tree" directory in this repository.  
+If you want to use MIMO mode device tree, rename to "yonaguni_cmos.dtb"  
 For further information about ADRV9002 operation mode, please refer:  
 https://wiki.analog.com/resources/tools-software/linux-drivers/iio-transceiver/adrv9002#device_modes
 
-If you want to use MIMO mode device tree, please rename yonaguni_cmos-rx2tx2.dtb to yonaguni_cmos.dtb, then place to boot partition in the SD card image.  
+If you want to use MIMO mode device tree, please rename "yonaguni_cmos-rx2tx2.dtb" to "yonaguni_cmos.dtb" then place to boot partition in the SD card image.  
 
 
 ## 3. Replace boot files
@@ -108,14 +110,14 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
     fixup4.dat                zynq-adrv9361-z7035-bob                zynq-zed-adv7511-ad4630-24                         zynqmp-zcu102-rev10-stingray
     ```
 
-2. Remove all files from BOOT partition and write all prepared Yonaguni boot files.
+2. Remove all files from BOOT partition and write all prepared ADRV9002 RF-SoM boot files.
 
     ```Shell
     $ sudo rm -rf /sdroot/
     $ sudo cp --preserve=timestamps extlinux/extlinux.conf /sdroot/extlinux
     $ sudo cp --preserve=timestamps u-boot-with-spl.sfp /sdroot
     $ sudo cp --preserve=timestamps u-boot.scr /sdroot
-    $ sudo cp --preserve=timestamps yonaguni_cmos.dtb /sdroot
+    $ sudo cp --preserve=timestamps ./device_tree/yonaguni_cmos.dtb /sdroot
     $ sudo cp --preserve=timestamps yonaguni_cmos.rbf /sdroot
     $ sudo cp --preserve=timestamps zImage /sdroot
     ```
@@ -139,7 +141,7 @@ If you'd like to customize the rootfs, mount loop0p2 and execute `chroot`.
 
 
 ## Conclusion
-Now you have the Yonaguni SD card image.  
+Now you have the ADRV9002 RF-SoM SD card image.  
 Write the image to a SD card.
 
 

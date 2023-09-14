@@ -1,6 +1,6 @@
 # ADRV9002 RF-SoM
 
-- [**ADRV9002 RF-SoM**](#adrv9002-rf-som)
+- [ADRV9002 RF-SoM](#adrv9002-rf-som)
   - [**Project Descriptions**](#project-descriptions)
   - [**Hardware Overview**](#hardware-overview)
     - [**Hardware Architecture**](#hardware-architecture)
@@ -44,8 +44,8 @@
 
 
 ## **Hardware Overview**
-  Yonaguni is a compact RF System on Module (SoM).
-  Yonaguni integrates an Intel Cyclone® V SE SoC FPGA baseband processor, Analog Devices ADAU1761 SigmaDSP® integrated audio codec IC, and power circuits with Analog Devices ADRV9002 Agile Transceiver™ IC.
+  ADRV9002 RF-SoM is a compact RF System on Module (SoM).
+  ADRV9002 RF-SoM integrates an Intel Cyclone® V SE SoC FPGA baseband processor, Analog Devices ADAU1761 SigmaDSP® integrated audio codec IC, and power circuits with Analog Devices ADRV9002 Agile Transceiver™ IC.
   ![Board Picture](./img/board.png)
   Board Top View
 
@@ -55,7 +55,7 @@
 
 
 ### **Hardware Architecture**
-  The following shows a block diagram of the Yonaguni hardware architecture.
+  The following shows a block diagram of the ADRV9002 RF-SoM hardware architecture.
   ![Functional block diagram](./img/functional_block.svg)
   For further descriptions, refer ```Yonaguni_HW-Specifications_r2.00.docx``` (current version is only available in Japanese).
 
@@ -86,7 +86,7 @@ Note: These are the results based on our measurement method. It may differ from 
   In the Cyclone V SoC, the LVDS IO voltage is 2.5V. On the other hand, the ADRV9002 operates at 1.8V for both CSSI and LSSI.
   The SoC is electrically matched to the LVDS of the ADRV9002 after being configured with LVDS.
   However, if the SoC is configured with CSSI while an IO voltage of 2.5V is applied at J1, 2.5V will be applied to the interface and damage the ADRV9002.
-  For this reason, in Yonaguni's HDL reference design, if the SoC is configured with CSSI but 2.5V is applied, the red LED (D2) lights up and indicates the error.
+  For this reason, in ADRV9002 RF-SoM's HDL reference design, if the SoC is configured with CSSI but 2.5V is applied, the red LED (D2) lights up and indicates the error.
   At this time, the data port of ADRV9002 is protected to be Hi-Z on the SoC side.
 
 #### **ADRV9002 Clock Selector (SW1)**
@@ -155,7 +155,7 @@ Note: These are the results based on our measurement method. It may differ from 
   USB to serial UART interface IC: FTDI FT232R
 
   Green LEDs (D11, D12) indicate that UART communication is in progress.
-  For Tx (Yonaguni to PC), D12 lights up. For Rx (PC to Yonaguni), D11 lights up.
+  For Tx (ADRV9002 RF-SoM to PC), D12 lights up. For Rx (PC to ADRV9002 RF-SoM), D11 lights up.
 
 
 #### **Cyclone V Boot Selector (J3)**
@@ -172,7 +172,7 @@ Note: These are the results based on our measurement method. It may differ from 
 | 5 | MSEL[4] | 0:ON, 1:OFF |
 | 6 | N/A | |
 
-  In Yonaguni, MSEL[4..0] is set to 00100.
+  In ADRV9002 RF-SoM, MSEL[4..0] is set to 00100.
   For further descriptions, refer Cyclone V Device Handbook.
 
   When FPGA fabric configuration is completed successfully, the green LED (D3) lights up.
@@ -235,7 +235,7 @@ Note: These are the results based on our measurement method. It may differ from 
 
 ### **Power Supply**
 #### **USB Type-C (CN14)**
-  In order to operate Yonaguni, a USB PD AC adapter capable of 9V/3A (≥27W) is required.
+  In order to operate ADRV9002 RF-SoM, a USB PD AC adapter capable of 9V/3A (≥27W) is required.
   
   When using USB PD as a power source, J14 is always short.
   
@@ -245,7 +245,7 @@ Note: These are the results based on our measurement method. It may differ from 
 #### **USB PD IC I2C Port (J10)**
   To program USB PD IC(STUSB4500), use this I2C Port.
   
-  However, Yonaguni users typically do not program the STUSB4500.
+  However, ADRV9002 RF-SoM users typically do not program the STUSB4500.
   
 | Pin No | Type | Mnemonic | Note |
 ----|----|----|----
@@ -277,11 +277,10 @@ Note: These are the results based on our measurement method. It may differ from 
 
 ## **Software Overview**
 We provide FPGA design, HDL IP, Linux Kernel source code, and sample demo project.
-```
-HDL IP modified from ADI HDL project
-Linux Kernel source code for ADI Kuiper Linux
-Yonaguni FPGA design files
-```
+
+[FPGA design files](https://github.com/MarimoElectronics/Yonaguni-FPGA)  
+[HDL IP modified from ADI HDL project](https://github.com/MarimoElectronics/Yonaguni-FPGA/tree/main/yonaguni_cmos_linux/ip/hdl)  
+[Linux Kernel source code patch for ADI Kuiper Linux](./kernel_patch/linux_kernel_diff.patch)  
 
 
 
@@ -294,7 +293,14 @@ How-toUBoot.md
 README.md
 Yonaguni_Rev2_BOM_r1.09.xlsx
 Yonaguni_Schematic_r2.02.pdf
+device_tree/yonaguni_cmos.dtb
+device_tree/yonaguni_cmos.dts
+device_tree/yonaguni_cmos-rx2tx2.dtb
+device_tree/yonaguni_cmos-rx2tx2.dts
+kernel_patch/linux_kernel_diff.patch
 ```
+To prepare bootable linux SD card image, prease refer [How-to: Make ADRV9002 RF-SoM SD Card Image](./How-toSD.md).
+
 
 ## **License**
 Copyright (c) 2023 Marimo Electronics Co., Ltd.

@@ -1,0 +1,24 @@
+diff --git a/firmware/Navassa_CMOS_profile.json b/firmware/Navassa_CMOS_profile.json
+index 63dee4b1fa96..d6e74a6856f0 100644
+--- a/firmware/Navassa_CMOS_profile.json
++++ b/firmware/Navassa_CMOS_profile.json
+@@ -1,6 +1,6 @@
+ {
+   "clocks": {
+-    "deviceClock_kHz": 38400,
++    "deviceClock_kHz": 49152,
+     "clkPllVcoFreq_daHz": 884736000,
+     "clkPllHsDiv": 0,
+     "clkPllMode": 0,
+diff --git a/firmware/Navassa_LVDS_profile.json b/firmware/Navassa_LVDS_profile.json
+index 50434b6d7188..19e60a78e661 100644
+--- a/firmware/Navassa_LVDS_profile.json
++++ b/firmware/Navassa_LVDS_profile.json
+@@ -1,6 +1,6 @@
+ {
+   "clocks": {
+-    "deviceClock_kHz": 38400,
++    "deviceClock_kHz": 49152,
+     "clkPllVcoFreq_daHz": 884736000,
+     "clkPllHsDiv": 0,
+     "clkPllMode": 0,

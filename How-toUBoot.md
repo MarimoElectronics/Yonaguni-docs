@@ -10,10 +10,10 @@
 
 
 ## 1. Prepare the compile environment
-Before build the U-Boot image for Yonaguni, you need to prepare FPGA handoff files.  
+Before build the U-Boot image for ADRV9002 RF-SoM, you need to prepare FPGA handoff files.  
 You need Quartus Prime 20.1.1 Standard Edition and Soc EDS 20.1 Standard Edition.  
 
-To compile Linux kernel for Yonaguni, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain), formerly known as [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm).
+To compile Linux kernel for ADRV9002 RF-SoM, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain), formerly known as [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm).
 
 ```Shell
 $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/10.2-2020.11/binrel/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf.tar.xz
@@ -41,11 +41,11 @@ $ sudo apt install bc bison build-essential \
 
 ## 2. Prepare FPGA project folder
 Before building U-Boot, FPGA design has to be completed.  
-In the FPGA design folder, you can see handoff folder (in Yonaguni project, folder name is "hps_isw_handoff").  
+In the FPGA design folder, you can see handoff folder (in ADRV9002 RF-SoM project, folder name is "hps_isw_handoff").  
 Following steps is performed in FPGA folder.
 
 ```Shell
-$ export PROJECT_FOLDER=`/path/to/Yonaguni/FPGA/project/folder/`
+$ export PROJECT_FOLDER=`/path/to/FPGA/project/folder/`
 # for example, project folder name is "yonaguni_lvds_linux" and located in $TOP_FOLDER/,
 # export PROJECT_FOLDER=$TOP_FOLDER/yonaguni_lvds_linux
 ```
