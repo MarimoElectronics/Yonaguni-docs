@@ -1,6 +1,6 @@
 # ADRV9002 RF-SoM (MEC-00689002-EVB)
 
-- [Yonaguni](#yonaguni)
+- [ADRV9002 RF-SoM (MEC-00689002-EVB)](#ADRV9002 RF-SoM (MEC-00689002-EVB))
   - [**Project Descriptions**](#project-descriptions)
   - [**Hardware Overview**](#hardware-overview)
     - [**Hardware Architecture**](#hardware-architecture)
