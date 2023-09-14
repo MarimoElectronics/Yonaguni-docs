@@ -1,6 +1,6 @@
 # ADRV9002 RF-SoM
 
-- [ADRV9002 RF-SoM](#adrv9002-rf-som)
+- [**ADRV9002 RF-SoM**](#adrv9002-rf-som)
   - [**Project Descriptions**](#project-descriptions)
   - [**Hardware Overview**](#hardware-overview)
     - [**Hardware Architecture**](#hardware-architecture)
