@@ -1,4 +1,4 @@
-# Yonaguni
+# ADRV9002 RF-SoM (MEC-00689002-EVB)
 
 - [Yonaguni](#yonaguni)
   - [**Project Descriptions**](#project-descriptions)
@@ -35,7 +35,7 @@
 
 
 ## **Project Descriptions**
-  Yonaguni is a Software Defined Radio (SDR) System on Module (SoM) for Analog Devices ADRV9002 Agile Transceiver™ IC.
+  ADRV9002 RF-SoM (Model number: MEC-00689002-EVB, Development code: "Yonaguni") is a Software Defined Radio (SDR) System on Module (SoM) for Analog Devices ADRV9002 Agile Transceiver™ IC.
   The SoM is an Intel Cyclone® V SE SoC FPGA-based single-board that can be used as an evaluation tool and prototyping platform.
   The ADRV9002 2×2 transceiver with integrated DPD engine operates from 30 MHz to 6 GHz and supports narrow-band (kHz) and wideband operation up to 40 MHz.
   Marimo Electronics Co., Ltd. can also support the development of custom versions optimized for specific applications. 
