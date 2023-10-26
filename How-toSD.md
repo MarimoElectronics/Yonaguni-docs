@@ -126,7 +126,7 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
 
     ```Shell
     $ sudo umount /sdroot
-    $ sudo dd if=uboot.img of=/dev/mapper/loop0p3
+    $ sudo dd if=u-boot-with-spl.sfp of=/dev/mapper/loop0p3
       :
     ```
 
