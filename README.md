@@ -4,6 +4,7 @@
   - [**Project Descriptions**](#project-descriptions)
   - [**Hardware Overview**](#hardware-overview)
     - [**Hardware Architecture**](#hardware-architecture)
+    - [**Hardware Limitations**](#hardware-limitations)
     - [**ADRV9002 Connectors, Jumper, Switch**](#adrv9002-connectors-jumper-switch)
       - [**RF Ports (CN1 - CN7)**](#rf-ports-cn1---cn7)
       - [**ADRV9002 Interface Selector (J1)**](#adrv9002-interface-selector-j1)
@@ -57,7 +58,19 @@
 ### **Hardware Architecture**
   The following shows a block diagram of the ADRV9002 RF-SoM hardware architecture.
   ![Functional block diagram](./img/functional_block.svg)
-  For further descriptions, refer ```Yonaguni_HW-Specifications_r2.00.docx``` (current version is only available in Japanese).
+  For further descriptions, refer ```Yonaguni_HW-Specifications_r2.00.docx```* (current version is only available in Japanese. Currently in preparation.)
+
+
+
+### **Hardware Limitations**
+  The ADRV9002 RF-SoM cannot evaluate all features and performance of the ADRV9002. There are some limitations.
+- The RX sampling rate is up to 40Msps and the RX bandwidth is up to 20MHz. This is due to the bandwidth limitations of the LVDS interface of the Cyclone V SoC.
+- Current hardware design version showed frequency response degradation at 3.5 GHz and above.
+![Frequency response](./img/frequency_response_rx_path.png)
+
+  Note: These are the results based on our measurement method. It may differ from the manufacturer's published value.
+- External LO feature is not supported in this release. (External LO Inputs are designed from 60MHz to 3GHz, but are currently untested.)
+- User cannot use AUXADCs and AGPIOs. not
 
 
 
@@ -67,18 +80,13 @@
 ----|----|----|----
 | CN1 | In  | DEVCLK_IN | Device clock input |
 | CN2 | Out | TX1_OUT   | Output for transmitter channel 1 (Tx1) |
-| CN3 | In  | EXT_LO1   | External LO input 1 (LO1) * |
+| CN3 | In  | EXT_LO1   | External LO input 1 (LO1) |
 | CN4 | Out | TX2_OUT   | Output for transmitter channel 2 (Tx2) |
-| CN5 | In  | EXT_LO2   |  External LO input 2 (LO2) * |
-| CN6 | In  | RX1A_IN   | Input A for receiver channel 1 (Rx1) ** |
-| CN7 | In  | RX2A_IN   | Input A for receiver channel 2 (Rx2) ** |
+| CN5 | In  | EXT_LO2   |  External LO input 2 (LO2) |
+| CN6 | In  | RX1A_IN   | Input A for receiver channel 1 (Rx1) |
+| CN7 | In  | RX2A_IN   | Input A for receiver channel 2 (Rx2) |
 
-\* External LO feature is not supported in this release.
 
-\** Current hardware design version showed frequency response degradation at 3.5 GHz and above.  
-![Frequency response](./img/frequency_response_rx_path.png)
-
-Note: These are the results based on our measurement method. It may differ from the manufacturer's published value.
 
 #### **ADRV9002 Interface Selector (J1)**
   Switch between CMOS synchronous serial interface (CSSI) LVDS synchronous serial interface (LSSI).
