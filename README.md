@@ -70,7 +70,7 @@
 
   Note: These are the results based on our measurement method. It may differ from the manufacturer's published value.
 - External LO feature is not supported in this release. (External LO Inputs are designed from 60MHz to 3GHz, but are currently untested.)
-- User cannot use AUXADCs and AGPIOs. not
+- User cannot use AUXADCs and AGPIOs.
 
 
 
