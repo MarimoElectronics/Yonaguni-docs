@@ -58,7 +58,7 @@
 ### **Hardware Architecture**
   The following shows a block diagram of the ADRV9002 RF-SoM hardware architecture.
   ![Functional block diagram](./img/functional_block.svg)
-  For further descriptions, refer ```Yonaguni_HW-Specifications_r2.00.docx```* (current version is only available in Japanese. Currently in preparation.)
+  For further descriptions, refer ```Yonaguni_HW-Specifications_r2.00.docx``` (current version is only available in Japanese. Now in preparation.)
 
 
 
@@ -68,7 +68,7 @@
 - Current hardware design version showed frequency response degradation at 3.5 GHz and above.
 ![Frequency response](./img/frequency_response_rx_path.png)
 
-  Note: These are the results based on our measurement method. It may differ from the manufacturer's published value.
+  Note: These are the results based on our measurement method. It may differ from the manufacturer's published value.For detail, please refer to the "Yonaguni_RF_evalution_report.pdf" by Radiun Co., Ltd.(Japanese only)
 - External LO feature is not supported in this release. (External LO Inputs are designed from 60MHz to 3GHz, but are currently untested.)
 - User cannot use AUXADCs and AGPIOs.
 
