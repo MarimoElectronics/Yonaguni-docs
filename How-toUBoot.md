@@ -55,16 +55,15 @@ For further information, please refer Intel's documents.
 
 Run embedded_command_shell.sh included in SoC EDS, then run bsp-create-settings with no user options to convert the handoff data into source code:
 ```Shell
-cd $PROJECT_FOLDER
-mkdir -p software/bootloader
-cd software/bootloader
+$ cd $PROJECT_FOLDER
+$ mkdir -p software/bootloader
 # run next command in embedded_command_shell.sh environment
 #  for example, SoC EDS folder name is "intelFPGA/20.1/
 $ ./intleFPGA/20.1/embedded/embedded_command_shell.sh
 $ bsp-create-settings \
    --type spl \
    --bsp-dir software/bootloader \
-   --preloader-settings-dir "hps_isw_handoff/system_bd_hps_0" \
+   --preloader-settings-dir hps_isw_handoff/system_bd_hps_0 \
    --settings software/bootloader/settings.bsp
 ```
 
@@ -72,7 +71,7 @@ $ bsp-create-settings \
 ## 3. Retrieve U-Boot source
 
 ```Shell
-cd $PROJECT_FOLDER/software/bootloader
+$ cd $PROJECT_FOLDER/software/bootloader
 $ git clone https://github.com/altera-opensource/u-boot-socfpga
 $ cd u-boot-socfpga
 # use next line to use the 2020.07 U-Boot branch
@@ -103,6 +102,7 @@ Refer to U-Boot documentation for more details about the qts-filter script: http
 `-j` option is used for multithread compiling.
 ```Shell
 $ cd $PROJECT_FOLDER/software/bootloader/u-boot-socfpga
+$ export ARCH=arm
 $ export CROSS_COMPILE=arm-none-linux-gnueabihf-
 $ export UBOOT_OUTDIR=../u-boot_out
 $ make socfpga_cyclone5_defconfig O=$UBOOT_OUTDIR
