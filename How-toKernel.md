@@ -46,19 +46,29 @@ Please make sure to sync the branch to the SD card image release you will use.
 
 ## 3. Apply modifications
 Apply modifications to analogdevicesinc/linux for ADRV9002 RF-SoM reference design.  
-The patch file (linux_kernel_diff.patch) is in "kernel_patch" directory in this repository.  
-```Shell
-$ cd linux
-$ git apply --whitespace=nowarn ../kernel_patch/linux_kernel_diff.patch
-```
-If you prefer to keep no identifiers such as `-dirty` or `+` in the kernel version string, you must keep it locally committed and turn off the option in the next step.
-
 
 Modified files list:
 ```
 firmware/Navassa_CMOS_profile.json
-firmware_Navassa_LVDS_profile.json
+firmware/Navassa_LVDS_profile.json
 ```
+
+```Shell
+$ cd linux/firmware
+$ vim Navassa_CMOS_profile.json
+```
+
+Change the "deviceClock_kHz" in the following lines from "38400" to "49152".
+```
+{
+  "clocks": {
+    "deviceClock_kHz": 38400,
+    "clkPllVcoFreq_daHz": 884736000,
+    "clkPllHsDiv": 0,
+       :
+```
+Next, make the same changes to "Navassa_LVDS_profile.json".
+
 Device Tree file modification is not needed at this time, but have to be completed before preparing SD card image.
 
 
@@ -72,4 +82,9 @@ $ make menuconfig O=$KERNEL_OUTDIR
 # Uncheck [General setup > Automatically append version information to the version string]
 $ make zImage LOCALVERSION= O=$KERNEL_OUTDIR -j8
 # Leave LOCALVERSION blank to match the kernel version string to the Kuiper Linux release.
+```
+
+The zImage will be created in the following derectory.
+```
+./kernel_out/arch/arm/boot
 ```
