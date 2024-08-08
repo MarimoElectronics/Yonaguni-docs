@@ -305,7 +305,6 @@ device_tree/yonaguni_cmos.dtb
 device_tree/yonaguni_cmos.dts
 device_tree/yonaguni_cmos-rx2tx2.dtb
 device_tree/yonaguni_cmos-rx2tx2.dts
-kernel_patch/linux_kernel_diff.patch
 ```
 To prepare bootable linux SD card image, prease refer [How-to: Make ADRV9002 RF-SoM SD Card Image](./How-toSD.md).
 
