@@ -29,6 +29,7 @@ $ sudo apt install gawk wget git-core diffstat unzip texinfo \
   libncurses-dev flex bison openssl libssl-dev m4 libgmp3-dev libmpc-dev \
   libmpfr-dev
 ```
+Note: The above dependencies are for Ubuntu 20.04 and may depend on the OS version.
 
 
 ## 2. Get kernel source
