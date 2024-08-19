@@ -61,6 +61,7 @@ add map loop0p3 (252:2): 0 16384 linear 7:0 8192
 $ ls /dev/mapper/
 control  loop0p1  loop0p2  loop0p3
 ```
+Note: The "0" after the "loop" above can be a different number.
 
 For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(rootfs), and the last partition is for the boot image partition (custom partition type=0xA2).  
 
@@ -114,6 +115,7 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
 
     ```Shell
     $ sudo rm -rf /sdroot/
+    $ sudo mkdir /sdroot/extlinux
     $ sudo cp --preserve=timestamps extlinux/extlinux.conf /sdroot/extlinux
     $ sudo cp --preserve=timestamps u-boot-with-spl.sfp /sdroot
     $ sudo cp --preserve=timestamps u-boot.scr /sdroot
@@ -143,6 +145,12 @@ If you'd like to customize the rootfs, mount loop0p2 and execute `chroot`.
 ## Conclusion
 Now you have the ADRV9002 RF-SoM SD card image.  
 Write the image to a SD card.
+
+The following is an example where the SD card drive is sda.
+
+   ```Shell
+    $ sudo dd 2023-04-02-ADI-Kuiper-full.img of=/dev/sda status=progress bs=4M conv=fsync
+   ```
 
 
 Note:  
