@@ -149,7 +149,7 @@ Write the image to a SD card.
 The following is an example where the SD card drive is sda.
 
    ```Shell
-    $ sudo dd 2023-04-02-ADI-Kuiper-full.img of=/dev/sda status=progress
+    $ sudo dd 2023-04-02-ADI-Kuiper-full.img of=/dev/sda status=progress bs=4M conv=fsync
    ```
 
 
