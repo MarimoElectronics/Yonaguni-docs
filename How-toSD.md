@@ -9,7 +9,12 @@
 
 ## 1. Download Analog Devices Kuiper Linux
 Go [Kuiper Linux wiki](https://wiki.analog.com/resources/tools-software/linux-software/adi-kuiper_images/release_notes) and download actual zip file.  
-If the supported OS version by ADRV9002 RF-SoM is older than latest release, expand **Old Releases** block and find direct link.  
+If the supported OS version by ADRV9002 RF-SoM is older than latest release, expand **Previous Kuiper Linux Releases** block and find direct link.  
+> e.g.  
+> SD card image: Kuiper Linux 2021_R2  
+> --> Kernel branch: 2021_r2  
+> --> HDL branch: hdl_2021_r2  
+
 Please be sure to verify the checksum for the downloaded image.  
 Then unzip file.
 
@@ -141,7 +146,6 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
 
 If you'd like to customize the rootfs, mount loop0p2 and execute `chroot`.
 
-
 ## Conclusion
 Now you have the ADRV9002 RF-SoM SD card image.  
 Write the image to a SD card.
@@ -149,7 +153,7 @@ Write the image to a SD card.
 The following is an example where the SD card drive is sda.
 
    ```Shell
-    $ sudo dd 2023-04-02-ADI-Kuiper-full.img of=/dev/sda status=progress bs=4M conv=fsync
+    $ sudo dd if=2023-04-02-ADI-Kuiper-full.img of=/dev/sda status=progress bs=4M conv=fsync
    ```
 
 
