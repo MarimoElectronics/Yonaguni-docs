@@ -33,7 +33,7 @@ $ sudo apt install bc bison build-essential \
   python3-pkg-resources python3-pycryptodome python3-pyelftools \
   python3-pytest python3-pytest-xdist python3-sphinxcontrib.apidoc \
   python3-sphinx-rtd-theme python3-subunit python3-testtools \
-  python3-virtualenv swig uuid-dev
+  python3-virtualenv swig
 ```
 
 
@@ -59,7 +59,7 @@ $ cd $PROJECT_FOLDER
 $ mkdir -p software/bootloader
 # run next command in embedded_command_shell.sh environment
 #  for example, SoC EDS folder name is "intelFPGA/20.1/
-$ ./intleFPGA/20.1/embedded/embedded_command_shell.sh
+$ ./intelFPGA/20.1/embedded/embedded_command_shell.sh
 $ bsp-create-settings \
    --type spl \
    --bsp-dir software/bootloader \
