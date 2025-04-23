@@ -29,20 +29,20 @@ $ sudo apt install gawk wget git-core diffstat unzip texinfo \
   libncurses-dev flex bison openssl libssl-dev m4 libgmp3-dev libmpc-dev \
   libmpfr-dev
 ```
-Note: The above dependencies are for Ubuntu 20.04 and may depend on the OS version.
+Note: The above dependencies are for Ubuntu 22.04 and may depend on the OS version.
 
 
 ## 2. Get kernel source
 
 ```Shell
-$ git clone -b 2021_R2 https://www.github.com/analogdevicesinc/linux
+$ git clone -b 2023_R2 https://www.github.com/analogdevicesinc/linux
 ```
 
 Please make sure to sync the branch to the SD card image release you will use.  
 > e.g.  
-> SD card image: Kuiper Linux 2021_R2  
-> --> Kernel branch: 2021_r2  
-> --> HDL branch: hdl_2021_r2  
+> SD card image: Kuiper Linux 2023_r2  
+> --> Kernel branch: 2023_R2  
+> --> HDL branch: hdl_2023_r2  
 
 
 ## 3. Apply modifications
@@ -77,7 +77,7 @@ Device Tree file modification is not needed at this time, but have to be complet
 `-j` option is used for multithread compiling.
 
 ```Shell
-$ cd linux
+$ cd $TOP_FOLDER/linux
 $ make socfpga_adi_defconfig O=$KERNEL_OUTDIR
 $ make menuconfig O=$KERNEL_OUTDIR
 # Uncheck [General setup > Automatically append version information to the version string]

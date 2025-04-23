@@ -11,7 +11,7 @@
 
 ## 1. Prepare the compile environment
 Before build the U-Boot image for ADRV9002 RF-SoM, you need to prepare FPGA handoff files.  
-You need Quartus Prime 20.1.1 Standard Edition and Soc EDS 20.1 Standard Edition.  
+You need Quartus Prime 22.1std.0 Lite Edition and Soc EDS 20.1 Standard Edition.  
 
 To compile Linux kernel for ADRV9002 RF-SoM, we use [Arm GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain), formerly known as [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm).
 
@@ -37,8 +37,6 @@ $ sudo apt install bc bison build-essential \
 ```
 
 
-
-
 ## 2. Prepare FPGA project folder
 Before building U-Boot, FPGA design has to be completed.  
 In the FPGA design folder, you can see handoff folder (in ADRV9002 RF-SoM project, folder name is "hps_isw_handoff").  
@@ -46,8 +44,8 @@ Following steps is performed in FPGA folder.
 
 ```Shell
 $ export PROJECT_FOLDER=`/path/to/FPGA/project/folder/`
-# for example, project folder name is "yonaguni_lvds_linux" and located in $TOP_FOLDER/,
-# export PROJECT_FOLDER=$TOP_FOLDER/yonaguni_lvds_linux
+# for example, project folder name is "hdl" and located in $TOP_FOLDER/,
+# export PROJECT_FOLDER=$TOP_FOLDER/hdl/projects/yonaguni/c5soc
 ```
 
 Make sure to regenerate handoff folder if you modify FPGA designs.  
@@ -58,8 +56,8 @@ Run embedded_command_shell.sh included in SoC EDS, then run bsp-create-settings 
 $ cd $PROJECT_FOLDER
 $ mkdir -p software/bootloader
 # run next command in embedded_command_shell.sh environment
-#  for example, SoC EDS folder name is "intelFPGA/20.1/
-$ ./intelFPGA/20.1/embedded/embedded_command_shell.sh
+# for example, SoC EDS folder name is "intelFPGA/20.1/ and located in home directory.
+$ ~/intelFPGA/20.1/embedded/embedded_command_shell.sh
 $ bsp-create-settings \
    --type spl \
    --bsp-dir software/bootloader \
@@ -79,7 +77,7 @@ $ git checkout -b test-bootloader -t origin/socfpga_v2020.07
 # If doing the same thing as the above three lines in one line,
 # git clone -b socfpga_v2020.07 https://github.com/altera-opensource/u-boot-socfpga u-boot-socfpga
 ```
-Latest officialy supported u-boot for Quartus Standard v20.1.1 is u-boot-socfpga v2021.04, but we use u-boot-socfpga v2020.07 in this procedure.  
+Latest officialy supported u-boot for Quartus Standard v22.1std.0 is u-boot-socfpga v2022.04, but we use u-boot-socfpga v2020.07 in this procedure.  
 We only checked with u-boot-socfpga v2020.07.
 
 
@@ -119,7 +117,7 @@ $ vim u-boot.txt
 ```
 Write below lines to u-boot.txt:
 ```Shell
-fatload mmc 0:1 $loadaddr yonaguni_cmos.rbf;
+fatload mmc 0:1 $loadaddr yonaguni_c5soc.rbf;
 fpga load 0 $loadaddr $filesize;
 setenv fdtfile yonaguni_cmos.dtb;
 bridge enable;

@@ -11,9 +11,9 @@
 Go [Kuiper Linux wiki](https://wiki.analog.com/resources/tools-software/linux-software/adi-kuiper_images/release_notes) and download actual zip file.  
 If the supported OS version by ADRV9002 RF-SoM is older than latest release, expand **Previous Kuiper Linux Releases** block and find direct link.  
 > e.g.  
-> SD card image: Kuiper Linux 2021_R2  
-> --> Kernel branch: 2021_r2  
-> --> HDL branch: hdl_2021_r2  
+> SD card image: Kuiper Linux 2023_r2  
+> --> Kernel branch: 2023_R2  
+> --> HDL branch: hdl_2023_r2  
 
 Please be sure to verify the checksum for the downloaded image.  
 Then unzip file.
@@ -26,7 +26,7 @@ Prepare files listed below:
 extlinux/extlinux.conf
 u-boot-with-spl.sfp
 u-boot.scr
-./device_tree/yonaguni_cmos.dtb
+yonaguni_cmos.dtb
 yonaguni_cmos.rbf
 zImage
 ```
@@ -59,7 +59,7 @@ In this instruction, we use kpartx to mount `.img` file without writing to SD ca
 ```Shell
 $ sudo apt install kpartx
   :
-$ sudo kpartx -av 2023-04-02-ADI-Kuiper-full.img
+$ sudo kpartx -av 2024-11-08-ADI-Kuiper-full.img
 add map loop0p1 (252:0): 0 4194304 linear 7:0 24576
 add map loop0p2 (252:1): 0 20447232 linear 7:0 4218880
 add map loop0p3 (252:2): 0 16384 linear 7:0 8192
@@ -119,13 +119,13 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
 2. Remove all files from BOOT partition and write all prepared ADRV9002 RF-SoM boot files.
 
     ```Shell
-    $ sudo rm -rf /sdroot/
+    $ sudo rm -rf /sdroot/*.*
     $ sudo mkdir /sdroot/extlinux
     $ sudo cp --preserve=timestamps extlinux/extlinux.conf /sdroot/extlinux
     $ sudo cp --preserve=timestamps u-boot-with-spl.sfp /sdroot
     $ sudo cp --preserve=timestamps u-boot.scr /sdroot
-    $ sudo cp --preserve=timestamps ./device_tree/yonaguni_cmos.dtb /sdroot
-    $ sudo cp --preserve=timestamps yonaguni_cmos.rbf /sdroot
+    $ sudo cp --preserve=timestamps yonaguni_cmos.dtb /sdroot
+    $ sudo cp --preserve=timestamps yonaguni_c5soc.rbf /sdroot
     $ sudo cp --preserve=timestamps zImage /sdroot
     ```
 
@@ -140,7 +140,7 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
 4. Cleanup the device map.
 
     ```Shell
-    $ sudo kpartx -d 2023-04-02-ADI-Kuiper-full.img
+    $ sudo kpartx -d 2024-11-08-ADI-Kuiper-full.img
     $ sudo rm -r /sdroot
     ```
 
@@ -153,7 +153,7 @@ Write the image to a SD card.
 The following is an example where the SD card drive is sda.
 
    ```Shell
-    $ sudo dd if=2023-04-02-ADI-Kuiper-full.img of=/dev/sda status=progress bs=4M conv=fsync
+    $ sudo dd if=2024-11-08-ADI-Kuiper-full.img of=/dev/sda status=progress bs=4M conv=fsync
    ```
 
 
