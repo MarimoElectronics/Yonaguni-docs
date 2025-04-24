@@ -27,7 +27,7 @@ extlinux/extlinux.conf
 u-boot-with-spl.sfp
 u-boot.scr
 yonaguni_cmos.dtb
-yonaguni_cmos.rbf
+yonaguni_c5soc.rbf
 zImage
 ```
 
@@ -119,7 +119,7 @@ For Kuiper Linux image, 1st partition is for `/boot`, 2nd partition is for `/`(r
 2. Remove all files from BOOT partition and write all prepared ADRV9002 RF-SoM boot files.
 
     ```Shell
-    $ sudo rm -rf /sdroot/*.*
+    $ sudo rm -rf /sdroot/
     $ sudo mkdir /sdroot/extlinux
     $ sudo cp --preserve=timestamps extlinux/extlinux.conf /sdroot/extlinux
     $ sudo cp --preserve=timestamps u-boot-with-spl.sfp /sdroot
