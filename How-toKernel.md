@@ -40,7 +40,7 @@ $ git clone -b 2023_r2_p1 https://www.github.com/analogdevicesinc/linux
 
 Please make sure to sync the branch to the SD card image release you will use.  
 > e.g.  
-> SD card image: Kuiper Linux 2023_r2 Patch1 
+> SD card image: Kuiper Linux 2023_r2 Patch1  
 > --> Kernel branch: 2023_r2_p1  
 > --> HDL branch: 2023_R2_p1  
 
