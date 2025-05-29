@@ -35,14 +35,14 @@ Note: The above dependencies are for Ubuntu 22.04 and may depend on the OS versi
 ## 2. Get kernel source
 
 ```Shell
-$ git clone -b 2023_R2 https://www.github.com/analogdevicesinc/linux
+$ git clone -b 2023_r2_p1 https://www.github.com/analogdevicesinc/linux
 ```
 
 Please make sure to sync the branch to the SD card image release you will use.  
 > e.g.  
-> SD card image: Kuiper Linux 2023_r2  
-> --> Kernel branch: 2023_R2  
-> --> HDL branch: hdl_2023_r2  
+> SD card image: Kuiper Linux 2023_r2 Patch1 
+> --> Kernel branch: 2023_r2_p1  
+> --> HDL branch: 2023_R2_p1  
 
 
 ## 3. Apply modifications
