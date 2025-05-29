@@ -11,7 +11,7 @@
 Go [Kuiper Linux wiki](https://wiki.analog.com/resources/tools-software/linux-software/adi-kuiper_images/release_notes) and download actual zip file.  
 If the supported OS version by ADRV9002 RF-SoM is older than latest release, expand **Previous Kuiper Linux Releases** block and find direct link.  
 > e.g.  
-> SD card image: Kuiper Linux 2023_r2 Patch1
+> SD card image: Kuiper Linux 2023_r2 Patch1  
 > --> Kernel branch: 2023_r2_p1  
 > --> HDL branch: 2023_R2_p1  
 
